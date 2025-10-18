@@ -1,0 +1,26 @@
+{
+  "name": "滴答滴答",
+  "version": "1.0.0",
+  "description": "解决我们不存在问题的绝佳解决方案",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@next/font": "^13.4.19",
+    "framer-motion": "^10.16.4",
+    "axios": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "typescript": "^5.2.2"
+  }
+}
