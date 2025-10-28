@@ -125,9 +125,10 @@ const HaoShengJi: React.FC = () => {
       });
       
       // 处理支付响应
-      if (response.success && response.payUrl) {
+      const { success, payUrl } = response.data;   // 取出后端返回的 JSON
+      if (success && payUrl) {
         // 跳转到支付宝支付页面
-        window.location.href = response.payUrl;
+        window.location.href = payUrl;
       } else {
         alert('创建支付订单失败，请稍后重试');
       }
