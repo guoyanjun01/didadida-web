@@ -44,7 +44,7 @@ export const alipayAPI = {
     subscriptionType: 'monthly' | 'yearly';
     amount: number;
   }) => {
-    return api.post('/alipay/pay', orderData);
+    return api.post('/alipay/periodic', orderData);
   },
   
   // 查询支付状态
