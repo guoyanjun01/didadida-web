@@ -125,7 +125,7 @@ const HaoShengJi: React.FC = () => {
       });
       
       // 处理支付响应
-      const { success, payUrl } = response;   // 取出后端返回的 JSON（响应拦截器已处理response.data）
+      const { success, payUrl } = response.data;   // 取出后端返回的 JSON（响应拦截器已处理response.data）
       if (success && payUrl) {
         // 跳转到支付宝支付页面
         window.location.href = payUrl;
