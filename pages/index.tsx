@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 const Home: React.FC = () => {
   const router = useRouter();
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    let id = localStorage.getItem("userId");
+    if (!id) {
+      id = Date.now().toString();
+      localStorage.setItem("userId", id);
+    }
+    setUserId(id);
+  }, []);
 
   const handleAdminLogin = () => {
     // 这里应该添加实际的认证逻辑，现在只是模拟
@@ -201,6 +211,15 @@ const Home: React.FC = () => {
           </section>
         </div>
       </main>
+
+      {/* 会员开通区域 */}
+      <div style={{ marginTop: 50, textAlign: "center" }}>
+        <hr />
+        <h2>会员开通</h2>
+        <p>你的用户ID：{userId}</p>
+        <p>💰 9.9元</p>
+        <img src="/pay.png" style={{ width: 200 }} />
+      </div>
 
       {/* 页脚 */}
       <footer style={{ backgroundColor: '#333', color: 'white', padding: '40px 0' }}>
