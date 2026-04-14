@@ -24,13 +24,12 @@ const HaoShengJi: React.FC = () => {
   }
   
   const { user, updateUser, haoShengJiContent } = appContext;
-  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'yearly'>('monthly');
+  const [selectedPlan, setSelectedPlan] = useState("");
   const [showSummary, setShowSummary] = useState(false);
   const [summaryContent, setSummaryContent] = useState('');
   const [remainingRefreshes, setRemainingRefreshes] = useState(user?.remainingRefreshes || 4); // 每月4次刷新机会
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [showPay, setShowPay] = useState(false);
-  const [plan, setPlan] = useState("");
 
   // 模拟的升级服务内容
   const upgradeContents: ContentItem[] = [
@@ -257,8 +256,9 @@ const HaoShengJi: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className={`plan-card ${selectedPlan === 'monthly' ? 'selected' : ''}`}
-                    onClick={() => setSelectedPlan('monthly')}
+                    className={`plan-card ${selectedPlan === '49元/月' ? 'selected' : ''}`}
+                    onClick={() => setSelectedPlan('49元/月')}
+                    style={{ cursor: "pointer" }}
                   >
                     <h3>月度会员</h3>
                     <div className="plan-price">¥49<span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#666' }}>/月</span></div>
@@ -273,8 +273,8 @@ const HaoShengJi: React.FC = () => {
                         type="radio"
                         id="monthly"
                         name="plan"
-                        checked={selectedPlan === 'monthly'}
-                        onChange={() => setSelectedPlan('monthly')}
+                        checked={selectedPlan === '49元/月'}
+                        onChange={() => setSelectedPlan('49元/月')}
                       />
                       <label htmlFor="monthly">选择</label>
                     </div>
@@ -284,8 +284,9 @@ const HaoShengJi: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className={`plan-card pro ${selectedPlan === 'yearly' ? 'selected' : ''}`}
-                    onClick={() => setSelectedPlan('yearly')}
+                    className={`plan-card pro ${selectedPlan === '199元/年' ? 'selected' : ''}`}
+                    onClick={() => setSelectedPlan('199元/年')}
+                    style={{ cursor: "pointer" }}
                   >
                     <div className="recommended">推荐</div>
                     <h3>年度会员</h3>
@@ -302,8 +303,8 @@ const HaoShengJi: React.FC = () => {
                         type="radio"
                         id="yearly"
                         name="plan"
-                        checked={selectedPlan === 'yearly'}
-                        onChange={() => setSelectedPlan('yearly')}
+                        checked={selectedPlan === '199元/年'}
+                        onChange={() => setSelectedPlan('199元/年')}
                       />
                       <label htmlFor="yearly">选择</label>
                     </div>
@@ -311,18 +312,22 @@ const HaoShengJi: React.FC = () => {
                 </div>
 
                 {/* 订阅按钮 */}
-                <div className="text-center mb-40">
-                  <button onClick={() => {
-                    setPlan("49元/月");
-                    setShowPay(true);
-                  }} className="btn btn-premium mr-20">
-                    开通会员（49/月）
-                  </button>
-                  <button onClick={() => {
-                    setPlan("199元/年");
-                    setShowPay(true);
-                  }} className="btn btn-premium">
-                    开通会员（199/年）
+                <div style={{ textAlign: "center", marginTop: 30 }}>
+                  <button
+                    onClick={() => {
+                      if (!selectedPlan) {
+                        alert("请先选择套餐");
+                        return;
+                      }
+                      setShowPay(true);
+                    }}
+                    style={{
+                      padding: "12px 30px",
+                      fontSize: "16px"
+                    }}
+                    className="btn btn-premium"
+                  >
+                    开通会员
                   </button>
                 </div>
 
@@ -360,7 +365,7 @@ const HaoShengJi: React.FC = () => {
                         <p>访问"好升级"专区的所有高级内容</p>
                       </div>
                     </div>
-                    {selectedPlan === 'yearly' && (
+                    {selectedPlan === '199元/年' && (
                       <div className="benefit-item">
                         <div className="benefit-icon">🎁</div>
                         <div className="benefit-content">
@@ -377,19 +382,16 @@ const HaoShengJi: React.FC = () => {
 
           {showPay && (
             <div style={{ marginTop: 40, textAlign: "center" }}>
-              <hr />
               <h3>扫码开通会员</h3>
 
-              <p>当前选择：{plan}</p>
+              <p>当前选择：{selectedPlan}</p>
 
               <p>你的用户ID：</p>
               <b>{typeof window !== "undefined" && localStorage.getItem("userId")}</b>
 
-              <div style={{ marginTop: 20 }}>
-                <img src="/pay.png" style={{ width: 200 }} />
-              </div>
+              <img src="/pay.png" style={{ width: 200, marginTop: 20 }} />
 
-              <p style={{ marginTop: 10, color: "#666" }}>
+              <p style={{ color: "#666" }}>
                 支付后联系客服开通权限
               </p>
             </div>
