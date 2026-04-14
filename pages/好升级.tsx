@@ -319,6 +319,21 @@ const HaoShengJi: React.FC = () => {
                   </button>
                 </div>
 
+                {/* 扫码开通会员 */}
+                <div style={{ marginTop: 40, textAlign: "center" }}>
+                  <h3>扫码开通会员</h3>
+                  <p>你的用户ID：</p>
+                  <b>{typeof window !== "undefined" && localStorage.getItem("userId")}</b>
+
+                  <div style={{ marginTop: 20 }}>
+                    <img src="/pay.png" style={{ width: 200 }} />
+                  </div>
+
+                  <p style={{ marginTop: 10, color: "#666" }}>
+                    支付后联系客服开通权限
+                  </p>
+                </div>
+
                 {/* 会员权益 */}
                 <div className="mb-40">
                   <h3 className="text-2xl mb-40">会员专享权益</h3>

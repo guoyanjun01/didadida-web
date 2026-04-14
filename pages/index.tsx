@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 const Home: React.FC = () => {
   const router = useRouter();
   const [userId, setUserId] = useState("");
+  const [hasAccess, setHasAccess] = useState(false);
 
   useEffect(() => {
     let id = localStorage.getItem("userId");
@@ -15,6 +16,16 @@ const Home: React.FC = () => {
     }
     setUserId(id);
   }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    fetch(`/api/check-access?userId=${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        setHasAccess(data.hasAccess);
+      });
+  }, [userId]);
 
   const handleAdminLogin = () => {
     // 这里应该添加实际的认证逻辑，现在只是模拟
@@ -212,14 +223,7 @@ const Home: React.FC = () => {
         </div>
       </main>
 
-      {/* 会员开通区域 */}
-      <div style={{ marginTop: 50, textAlign: "center" }}>
-        <hr />
-        <h2>会员开通</h2>
-        <p>你的用户ID：{userId}</p>
-        <p>💰 9.9元</p>
-        <img src="/pay.png" style={{ width: 200 }} />
-      </div>
+      
 
       {/* 页脚 */}
       <footer style={{ backgroundColor: '#333', color: 'white', padding: '40px 0' }}>
