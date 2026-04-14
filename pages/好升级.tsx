@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useContextValue } from '../contexts';
-import { alipayAPI } from '../src/services/api';
 
 interface ContentItem {
   id: string;
@@ -28,7 +27,6 @@ const HaoShengJi: React.FC = () => {
   const [showSummary, setShowSummary] = useState(false);
   const [summaryContent, setSummaryContent] = useState('');
   const [remainingRefreshes, setRemainingRefreshes] = useState(user?.remainingRefreshes || 4); // 每月4次刷新机会
-  const [isSubscribing, setIsSubscribing] = useState(false);
   const [showPay, setShowPay] = useState(false);
 
   // 模拟的升级服务内容
@@ -108,38 +106,7 @@ const HaoShengJi: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
-  // 处理订阅
-  const handleSubscribe = async () => {
-    setIsSubscribing(true);
-    try {
-      // 获取用户ID，如果不存在则创建临时ID
-      const userId = user?.id || `user_${Date.now()}`;
-      
-      // 计算金额
-      const amount = selectedPlan === 'monthly' ? 49 : 199;
-      
-      // 调用支付宝API创建支付订单
-      const response = await alipayAPI.createPayment({
-        userId,
-        subscriptionType: selectedPlan,
-        amount
-      });
-      
-      // 处理支付响应
-      const { success, payUrl } = response.data;   // 取出后端返回的 JSON（响应拦截器已处理response.data）
-      if (success && payUrl) {
-        // 跳转到支付宝支付页面
-        window.location.href = payUrl;
-      } else {
-        alert('创建支付订单失败，请稍后重试');
-      }
-    } catch (error) {
-      console.error('支付过程出错:', error);
-      alert('支付过程中发生错误，请稍后重试');
-    } finally {
-      setIsSubscribing(false);
-    }
-  };
+
 
   return (
     <div>
