@@ -29,6 +29,8 @@ const HaoShengJi: React.FC = () => {
   const [summaryContent, setSummaryContent] = useState('');
   const [remainingRefreshes, setRemainingRefreshes] = useState(user?.remainingRefreshes || 4); // 每月4次刷新机会
   const [isSubscribing, setIsSubscribing] = useState(false);
+  const [showPay, setShowPay] = useState(false);
+  const [plan, setPlan] = useState("");
 
   // 模拟的升级服务内容
   const upgradeContents: ContentItem[] = [
@@ -310,29 +312,21 @@ const HaoShengJi: React.FC = () => {
 
                 {/* 订阅按钮 */}
                 <div className="text-center mb-40">
-                  <button 
-                    onClick={handleSubscribe} 
-                    className="btn btn-premium" 
-                    disabled={isSubscribing}
-                  >
-                    {isSubscribing ? '处理中...' : `立即订阅 ${selectedPlan === 'monthly' ? '¥49/月' : '¥199/年'}`}
+                  <button onClick={() => {
+                    setPlan("49元/月");
+                    setShowPay(true);
+                  }} className="btn btn-premium mr-20">
+                    开通会员（49/月）
+                  </button>
+                  <button onClick={() => {
+                    setPlan("199元/年");
+                    setShowPay(true);
+                  }} className="btn btn-premium">
+                    开通会员（199/年）
                   </button>
                 </div>
 
-                {/* 扫码开通会员 */}
-                <div style={{ marginTop: 40, textAlign: "center" }}>
-                  <h3>扫码开通会员</h3>
-                  <p>你的用户ID：</p>
-                  <b>{typeof window !== "undefined" && localStorage.getItem("userId")}</b>
 
-                  <div style={{ marginTop: 20 }}>
-                    <img src="/pay.png" style={{ width: 200 }} />
-                  </div>
-
-                  <p style={{ marginTop: 10, color: "#666" }}>
-                    支付后联系客服开通权限
-                  </p>
-                </div>
 
                 {/* 会员权益 */}
                 <div className="mb-40">
@@ -380,6 +374,26 @@ const HaoShengJi: React.FC = () => {
               </div>
             )}
           </section>
+
+          {showPay && (
+            <div style={{ marginTop: 40, textAlign: "center" }}>
+              <hr />
+              <h3>扫码开通会员</h3>
+
+              <p>当前选择：{plan}</p>
+
+              <p>你的用户ID：</p>
+              <b>{typeof window !== "undefined" && localStorage.getItem("userId")}</b>
+
+              <div style={{ marginTop: 20 }}>
+                <img src="/pay.png" style={{ width: 200 }} />
+              </div>
+
+              <p style={{ marginTop: 10, color: "#666" }}>
+                支付后联系客服开通权限
+              </p>
+            </div>
+          )}
         </div>
       </main>
 
