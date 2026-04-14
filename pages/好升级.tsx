@@ -347,22 +347,7 @@ const HaoShengJi: React.FC = () => {
             )}
           </section>
 
-          {showPay && (
-            <div style={{ marginTop: 40, textAlign: "center" }}>
-              <h3>扫码开通会员</h3>
 
-              <p>当前选择：{selectedPlan}</p>
-
-              <p>你的用户ID：</p>
-              <b>{typeof window !== "undefined" && localStorage.getItem("userId")}</b>
-
-              <img src="/pay.png" style={{ width: 200, marginTop: 20 }} />
-
-              <p style={{ color: "#666" }}>
-                支付后联系客服开通权限
-              </p>
-            </div>
-          )}
         </div>
       </main>
 
@@ -386,6 +371,52 @@ const HaoShengJi: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* 弹窗代码 */}
+      {showPay && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 999
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              padding: 30,
+              borderRadius: 10,
+              textAlign: "center",
+              width: 300
+            }}
+          >
+            <h3>扫码开通会员</h3>
+
+            <p>当前选择：{selectedPlan}</p>
+
+            <p>你的用户ID：</p>
+            <b>{typeof window !== "undefined" && localStorage.getItem("userId")}</b>
+
+            <div style={{ marginTop: 20 }}>
+              <img src="/pay.png" style={{ width: 200 }} />
+            </div>
+
+            <button
+              onClick={() => setShowPay(false)}
+              style={{ marginTop: 20 }}
+            >
+              关闭
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
