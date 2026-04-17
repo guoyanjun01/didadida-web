@@ -352,20 +352,38 @@ const HaoShengJi: React.FC = () => {
       </main>
 
       {/* 页脚 */}
-      <footer style={{ backgroundColor: '#333', color: 'white', padding: '40px 0' }}>
+      <footer style={{ 
+        background: '#f8f9fa', 
+        padding: '30px 0', 
+        marginTop: '40px',
+        borderTop: '1px solid #e9ecef'
+      }}>
         <div className="container">
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '20px' }}>嘀嗒嘀嗒</h3>
-            <p style={{ marginBottom: '20px', color: '#ccc' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            textAlign: 'center'
+          }}>
+            <h3>嘀嗒嘀嗒</h3>
+            <p style={{ margin: '10px 0' }}>
               解决我们不存在问题的绝佳解决方案
             </p>
-            <div style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
-              <Link href="/" style={{ color: '#ccc', textDecoration: 'none' }}>首页</Link>
-            <Link href="/拼好人" style={{ color: '#ccc', textDecoration: 'none' }}>拼好人</Link>
-            <Link href="/做好事" style={{ color: '#ccc', textDecoration: 'none' }}>做好事</Link>
-            <Link href="/好升级" style={{ color: '#ccc', textDecoration: 'none' }}>好升级</Link>
+            <div style={{ 
+              margin: '20px 0', 
+              display: 'flex', 
+              gap: '20px'
+            }}>
+              <Link href="/" style={{ color: '#495057', textDecoration: 'none' }}>首页</Link>
+              <Link href="/拼好人" style={{ color: '#495057', textDecoration: 'none' }}>拼好人</Link>
+              <Link href="/做好事" style={{ color: '#495057', textDecoration: 'none' }}>做好事</Link>
+              <Link href="/好升级" style={{ color: '#495057', textDecoration: 'none' }}>好升级</Link>
             </div>
-            <p style={{ fontSize: '0.9rem', color: '#999' }}>
+            <p style={{ 
+              marginTop: '20px', 
+              color: '#6c757d', 
+              fontSize: '14px'
+            }}>
               © 2025 嘀嗒嘀嗒 版权所有
             </p>
           </div>

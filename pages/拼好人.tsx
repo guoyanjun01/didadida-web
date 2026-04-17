@@ -134,7 +134,7 @@ const PinHaoRen: React.FC = () => {
         <div className="container header-content">
           <div>
             <h1>嘀嗒嘀嗒</h1>
-            <p>解决我们不存在问题的绝佳解决方案</p>
+            <p>发现更好的自己，开启成长之旅</p>
           </div>
           <button onClick={() => router.push('/后台')} className="btn btn-secondary">
             创作者入口
@@ -228,7 +228,7 @@ const PinHaoRen: React.FC = () => {
             </div>
 
             {/* 内容列表 */}
-            <div className="content-list">
+            <div className="card-grid">
               {filteredContents.length > 0 ? (
                 filteredContents.map((content) => (
                   <motion.div
@@ -236,7 +236,7 @@ const PinHaoRen: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className={`content-item ${isPremiumContent(content) ? 'premium' : ''}`}
+                    className={`card ${isPremiumContent(content) ? 'premium' : ''}`}
                   >
                     {isPremiumContent(content) && (
                       <span className="premium-badge">付费</span>
@@ -259,7 +259,7 @@ const PinHaoRen: React.FC = () => {
                   </motion.div>
                 ))
               ) : (
-                <div className="no-results">
+                <div className="card no-results">
                   <p>没有找到相关内容,请尝试其他关键词。</p>
                 </div>
               )}
@@ -269,20 +269,20 @@ const PinHaoRen: React.FC = () => {
       </main>
 
       {/* 页脚 */}
-      <footer style={{ backgroundColor: '#333', color: 'white', padding: '40px 0' }}>
+      <footer className="footer">
         <div className="container">
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '20px' }}>嘀嗒嘀嗒</h3>
-            <p style={{ marginBottom: '20px', color: '#ccc' }}>
-              解决我们不存在问题的绝佳解决方案
+          <div className="footer-content">
+            <h3>嘀嗒嘀嗒</h3>
+            <p>
+              发现更好的自己，开启成长之旅
             </p>
-            <div style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
-              <Link href="/" style={{ color: '#ccc', textDecoration: 'none' }}>首页</Link>
-              <Link href="/拼好人" style={{ color: '#ccc', textDecoration: 'none' }}>拼好人</Link>
-              <Link href="/做好事" style={{ color: '#ccc', textDecoration: 'none' }}>做好事</Link>
-              <Link href="/好升级" style={{ color: '#ccc', textDecoration: 'none' }}>好升级</Link>
+            <div className="footer-links">
+              <Link href="/">首页</Link>
+              <Link href="/拼好人">拼好人</Link>
+              <Link href="/做好事">做好事</Link>
+              <Link href="/好升级">好升级</Link>
             </div>
-            <p style={{ fontSize: '0.9rem', color: '#999' }}>
+            <p className="footer-copyright">
               © 2025 嘀嗒嘀嗒 版权所有
             </p>
           </div>

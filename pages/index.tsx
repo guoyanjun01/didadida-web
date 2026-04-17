@@ -93,153 +93,111 @@ const Home: React.FC = () => {
           {/* 功能介绍 */}
           <section className="mb-40">
             <h2 className="text-3xl text-center mb-40">我们的服务</h2>
-            <div className="content-list">
+            <div className="card-grid">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="card"
               >
-                <Link href="/拼好人" className="content-item" style={{ textDecoration: 'none' }}>
-                <div>
-                  <h3>拼好人</h3>
-                  <p>
-                    通过独特的文字隐喻，帮助您理解和提升个人品质。每个文字背后都有深刻的人生哲理和实用的生活智慧。
-                  </p>
-                  <div className="content-tags">
-                    <span className="tag">个人成长</span>
-                    <span className="tag">品质提升</span>
-                    <span className="tag">智慧分享</span>
-                  </div>
-                </div>
-              </Link>
+                <h3>拼好人</h3>
+                <p>探索个人成长的核心要素，培养良好的品德和心态。通过精选内容，帮助您成为更好的自己。</p>
+                <Link href="/拼好人" className="btn btn-primary mt-10">开始探索</Link>
               </motion.div>
-
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
+                className="card"
               >
-                <Link href="/做好事" className="content-item" style={{ textDecoration: 'none' }}>
-                <div>
-                  <h3>做好事</h3>
-                  <p>
-                    提供心灵鸡汤、学习搭子和知识拓展内容，nourish您的灵魂，连接志同道合的伙伴，拓展您的知识面。
-                  </p>
-                  <div className="content-tags">
-                    <span className="tag">心灵滋养</span>
-                    <span className="tag">学习交流</span>
-                    <span className="tag">知识拓展</span>
-                  </div>
-                </div>
-              </Link>
+                <h3>做好事</h3>
+                <p>发现生活中的美好，学习积极的心态和行为。通过心灵鸡汤、学习搭子等内容，丰富您的精神世界。</p>
+                <Link href="/做好事" className="btn btn-primary mt-10">开始探索</Link>
               </motion.div>
-
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
+                className="card"
               >
-                <Link href="/好升级" className="content-item" style={{ textDecoration: 'none' }}>
-                <div>
-                  <span className="premium-badge">付费</span>
-                  <h3>好升级</h3>
-                  <p>
-                    高级付费服务，提供专属内容、个性化指导和每月四次的精选内容汇总，助力您的全面成长。
-                  </p>
-                  <div className="content-tags">
-                    <span className="tag">专属内容</span>
-                    <span className="tag">个性化指导</span>
-                    <span className="tag">精选汇总</span>
-                  </div>
-                </div>
-              </Link>
+                <h3>好升级</h3>
+                <p>解锁高级内容和专属功能，享受更优质的成长体验。通过订阅会员，获得更多个性化的服务。</p>
+                <Link href="/好升级" className="btn btn-premium mt-10">升级订阅</Link>
               </motion.div>
             </div>
           </section>
 
-          {/* 订阅计划 */}
+          {/* 特色内容 */}
           <section className="mb-40">
-            <h2 className="text-3xl text-center mb-40">订阅计划</h2>
-            <div className="subscription-plans">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="plan-card"
-              >
-                <h3>月度会员</h3>
-                <div className="plan-price">¥49<span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#666' }}>/月</span></div>
-                <ul className="plan-features">
-                  <li>无限制访问所有付费内容</li>
-                  <li>每月4次精选内容汇总</li>
-                  <li>可下载汇总内容</li>
-                  <li>优先获取新内容</li>
-                </ul>
-                <Link href="/好升级" className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
-                  选择月度会员
-                </Link>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="plan-card pro"
-              >
-                <h3>年度会员</h3>
-                <div className="plan-price">¥199<span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#666' }}>/年</span></div>
-                <div className="text-success mb-20">节省58%，相当于¥16.6/月</div>
-                <ul className="plan-features">
-                  <li>包含所有月度会员权益</li>
-                  <li>额外赠送2次/月汇总次数</li>
-                  <li>专属定制内容推荐</li>
-                  <li>创作者一对一咨询（1次/年）</li>
-                </ul>
-                <Link href="/好升级" className="btn btn-premium" style={{ width: '100%', textAlign: 'center' }}>
-                  选择年度会员
-                </Link>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* 常见问题 */}
-          <section className="mb-40">
-            <h2 className="text-3xl text-center mb-40">常见问题</h2>
-            <div className="content-list">
-              <div className="content-item">
-                <h3>如何开始使用？</h3>
-                <p>只需注册账号，即可免费浏览部分内容。升级会员后，可访问所有付费内容。</p>
+            <h2 className="text-3xl text-center mb-40">特色内容</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="card"
+            >
+              <h3>为什么选择嘀嗒嘀嗒？</h3>
+              <ul style={{ listStyle: 'none', margin: '20px 0' }}>
+                <li style={{ padding: '10px 0', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ color: 'var(--success-color)', fontSize: '1.5rem' }}>✓</span>
+                  <span>高质量的精选内容，由专业团队精心制作</span>
+                </li>
+                <li style={{ padding: '10px 0', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ color: 'var(--success-color)', fontSize: '1.5rem' }}>✓</span>
+                  <span>个性化的学习路径，根据您的需求定制</span>
+                </li>
+                <li style={{ padding: '10px 0', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ color: 'var(--success-color)', fontSize: '1.5rem' }}>✓</span>
+                  <span>活跃的社区氛围，与志同道合的朋友一起成长</span>
+                </li>
+                <li style={{ padding: '10px 0', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ color: 'var(--success-color)', fontSize: '1.5rem' }}>✓</span>
+                  <span>持续更新的内容库，保持新鲜和活力</span>
+                </li>
+              </ul>
+              <div className="text-center mt-20">
+                <Link href="/好升级" className="btn btn-premium">立即体验</Link>
               </div>
-              <div className="content-item">
-                <h3>如何升级会员？</h3>
-                <p>在"好升级"页面选择适合您的订阅计划，完成支付后即可立即享受会员权益。</p>
-              </div>
-              <div className="content-item">
-                <h3>内容如何更新？</h3>
-                <p>我们的内容会定期更新，会员可以优先获取最新内容和独家内容。</p>
-              </div>
-            </div>
+            </motion.div>
           </section>
         </div>
       </main>
 
-      
-
       {/* 页脚 */}
-      <footer style={{ backgroundColor: '#333', color: 'white', padding: '40px 0' }}>
+      <footer style={{ 
+        background: '#f8f9fa', 
+        padding: '30px 0', 
+        marginTop: '40px',
+        borderTop: '1px solid #e9ecef'
+      }}>
         <div className="container">
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '20px' }}>嘀嗒嘀嗒</h3>
-            <p style={{ marginBottom: '20px', color: '#ccc' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            textAlign: 'center'
+          }}>
+            <h3>嘀嗒嘀嗒</h3>
+            <p style={{ margin: '10px 0' }}>
               解决我们不存在问题的绝佳解决方案
             </p>
-            <div style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
-              <Link href="/" style={{ color: '#ccc', textDecoration: 'none' }}>首页</Link>
-              <Link href="/拼好人" style={{ color: '#ccc', textDecoration: 'none' }}>拼好人</Link>
-              <Link href="/做好事" style={{ color: '#ccc', textDecoration: 'none' }}>做好事</Link>
-              <Link href="/好升级" style={{ color: '#ccc', textDecoration: 'none' }}>好升级</Link>
+            <div style={{ 
+              margin: '20px 0', 
+              display: 'flex', 
+              gap: '20px'
+            }}>
+              <Link href="/" style={{ color: '#495057', textDecoration: 'none' }}>首页</Link>
+              <Link href="/拼好人" style={{ color: '#495057', textDecoration: 'none' }}>拼好人</Link>
+              <Link href="/做好事" style={{ color: '#495057', textDecoration: 'none' }}>做好事</Link>
+              <Link href="/好升级" style={{ color: '#495057', textDecoration: 'none' }}>好升级</Link>
             </div>
-            <p style={{ fontSize: '0.9rem', color: '#999' }}>
+            <p style={{ 
+              marginTop: '20px', 
+              color: '#6c757d', 
+              fontSize: '14px'
+            }}>
               © 2025 嘀嗒嘀嗒 版权所有
             </p>
           </div>
